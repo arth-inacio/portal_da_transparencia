@@ -7,7 +7,7 @@ from playwright.async_api import Playwright, async_playwright
 async def run(playwright: Playwright) -> None:
 
     #Inicializa o playwright
-    browser = await playwright.chromium.launch(headless=False)
+    browser = await playwright.chromium.launch(headless=True)
     context = await browser.new_context()
     page = await context.new_page()
 
@@ -15,6 +15,7 @@ async def run(playwright: Playwright) -> None:
     await stealth_async(page)
 
     await page.goto("https://www.portaltransparencia.gov.br/")
+    await page.wait_for_load_state("domcontentloaded")
 
     await page.locator('button >> nth=6').click()
     await page.wait_for_timeout(3000)
