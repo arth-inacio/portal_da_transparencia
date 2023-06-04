@@ -3,7 +3,7 @@
 <h2 align="left"> Objetivos </h2>
 <p>
  <li>Esse projeto tem a intenção de apresentar a utilização da biblioteca Playwright de forma simples.
- <li>O script faz a extração de despesas públicas diretamente do site do <a href="https://www.portaltransparencia.gov.br/">Portal da Transparência</a> por classificação contábil de forma automatizada.
+ <li>O script faz a extração de despesas públicas diretamente do site do <a href="https://portaldatransparencia.gov.br/">Portal da Transparência</a> por classificação contábil de forma automatizada.
  <li>Projeto utilizado para a apresentação-resumo do artigo no evento SELITEC Internacional.
 </p>
 
