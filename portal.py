@@ -15,7 +15,7 @@ class Transparencia:
     async def playwright_start(self) -> None:
         # Método que Inicializa o playwright
         self.playwright = await async_playwright().start()
-        self.browser = await self.playwright.chromium.launch(headless=False)
+        self.browser = await self.playwright.chromium.launch(headless=True)
         self.context = await self.browser.new_context()
         self.page = await self.context.new_page()
 
@@ -62,7 +62,7 @@ class Transparencia:
             dados = {
                 "origem": coluna[2].text,
                 "destino": coluna[3].text,
-                "mes/ano": coluna[1].text,
+                "mes_ano": coluna[1].text,
                 "valor_total": coluna[17].text
             }
             self.debitos.append(dados)
