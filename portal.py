@@ -55,7 +55,10 @@ class Transparencia:
         div = soup.find("div", {"class":"dataTables_wrapper form-inline dt-bootstrap no-footer"})
         tabela = div.find("table", {"class":"dataTable no-footer"}).find("tbody")
         linhas = tabela.find_all("tr")
-       
+
+        await self._varredura_tabela(linhas)
+    
+    async def _varredura_tabela(self, linhas: list) -> list | None:
         #Aqui crio um dicionario para receber os dados da página e os coloco dentro de uma lista
         for linha in linhas[1:]:
             coluna = linha.find_all("td")
@@ -68,8 +71,8 @@ class Transparencia:
             self.debitos.append(dados)
        
         return print(self.debitos)
-        
-async def main():
+    
+async def main() -> None:
     transparencia = Transparencia()
     await transparencia.playwright_start()
     await transparencia._coleta_gastos()
