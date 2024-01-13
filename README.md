@@ -16,3 +16,5 @@
  <li>As libs restantes se encontram no arquivo de texto requirements.txt, e pode ser instalado através do comando "pip install -r requirements.txt"
 </p>
 
+<h2 align="left> Exemplo de Saída </h2>
+![image](https://github.com/arth-inacio/portal_da_transparencia/assets/74980776/b1dc95f7-1165-4e5c-8001-4f6a98417d92)
