@@ -3,3 +3,4 @@ playwright-stealth==1.0.5
 httpx==0.23.0
 asyncio==3.4.3
 beautifulsoup4==4.11.1
+pandas==2.1.4

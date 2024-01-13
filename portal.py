@@ -1,6 +1,7 @@
 import re
 import asyncio
 import csv
+import pandas as pd
 from bs4 import BeautifulSoup
 from playwright_stealth import stealth_async
 from playwright.async_api import async_playwright
@@ -69,6 +70,7 @@ class Transparencia:
             await self.page.get_by_role("link", name="Próxima ").click()
             await self.page.wait_for_timeout(1500)
         await self._salvar_csv()
+        await self._estruturar_csv()
        
     async def _varredura_tabela(self, linhas: list) -> list | None:
         #Aqui crio um dicionario para receber os dados da página e os coloco dentro de uma lista
@@ -78,7 +80,7 @@ class Transparencia:
                 "origem": coluna[2].text,
                 "destino": coluna[3].text,
                 "mes_ano": coluna[1].text,
-                "valor_total": coluna[17].text
+                "valor_total": coluna[18].text
             }
             self.debitos.append(dados)
     
@@ -89,6 +91,11 @@ class Transparencia:
             escritor.writeheader()
             for deb in self.debitos:
                 escritor.writerow(deb)
+
+    async def _estruturar_csv(self) -> None:
+        df = pd.DataFrame(self.debitos)
+        print(df)
+        df.to_csv('debitos.csv', index=False, encoding='utf-8')
 
 async def main() -> None:
     transparencia = Transparencia()
