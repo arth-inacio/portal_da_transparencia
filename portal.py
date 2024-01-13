@@ -15,9 +15,10 @@ class Transparencia:
     async def playwright_start(self) -> None:
         # Método que Inicializa o playwright
         self.playwright = await async_playwright().start()
-        self.browser = await self.playwright.chromium.launch(headless=True)
+        self.browser = await self.playwright.firefox.launch(headless=True)
         self.context = await self.browser.new_context()
         self.page = await self.context.new_page()
+        await stealth_async(self.page)
 
     async def playwright_finish(self) -> None:
         # Finaliza a sessão do playwright
@@ -26,15 +27,12 @@ class Transparencia:
         await self.browser.close()
 
     async def _coleta_gastos(self) -> list | None:
-        # Utilizando a biblioteca playwright_stealth acessar a pagina em modo anonimo
-        await stealth_async(self.page)
-
         # Acesso à página principal
         await self.page.goto("https://www.portaltransparencia.gov.br/")
-        await self.page.wait_for_load_state("domcontentloaded")
+        await self.page.wait_for_timeout(5000)
 
         # Clicando no botão Despesas e Receitas
-        await self.page.locator('button >> nth=6').click()
+        await self.page.locator("button[id=\"despesas-card\"]").click()
         await self.page.wait_for_timeout(3000)
 
         #Exemplo de função javascript (Acesso ao botao "consultar")
