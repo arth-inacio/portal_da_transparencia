@@ -15,7 +15,3 @@
  <li>Pandas</li>
  <li>As libs restantes se encontram no arquivo de texto requirements.txt, e pode ser instalado através do comando "pip install -r requirements.txt"
 </p>
-
-<h2 align="left"> Exemplo de Saída </h2>
-![Alt text](saida.PNG)
-
