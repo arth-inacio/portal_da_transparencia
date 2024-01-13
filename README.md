@@ -9,9 +9,10 @@
 
 <h2 align="left"> Tecnologias Utilizadas </h2>
 <p> 
- <li>Python 3.10.0
+ <li>Python 3.10.11
  <li>Playwright (Async) 1.28
  <li>BeautifulSoup4 4.11.1
+ <li>Pandas</li>
  <li>As libs restantes se encontram no arquivo de texto requirements.txt, e pode ser instalado através do comando "pip install -r requirements.txt"
 </p>
 
