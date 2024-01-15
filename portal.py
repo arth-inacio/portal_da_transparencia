@@ -38,13 +38,15 @@ class Transparencia:
             await self.page.locator("button[id=\"despesas-card\"]").click()
             await self.page.wait_for_timeout(1500)
 
-            #Exemplo de função javascript (Acesso ao botao "consultar")
+            # Exemplo de função javascript (Acesso ao botao "consultar")
             await self.page.evaluate('document.querySelector("#despesas-links > li:nth-child(2) > a").click()')
             await self.page.wait_for_timeout(1500)
 
+            # Seleciona a opção de consulta por classificação contábil
             await self.page.get_by_role("link", name="Pela classificação contábil da despesa").click()
             await self.page.wait_for_timeout(1500)
-
+            
+            # Seleciona a opção de paginação completa para podemos utilizar a maior parte dos dados da tabela
             await self.page.get_by_role("button", name="Paginação completa").click()
             await self.page.wait_for_timeout(3000)
         
@@ -56,6 +58,7 @@ class Transparencia:
 
         html = await self.page.content()
 
+        # Usando regex para coletar o total de páginas
         total_paginas = re.search(r"Página\s\d\sde\s(.*?)<", html, re.S).group(1)
 
         for _ in range(1, int(total_paginas)):
