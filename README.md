@@ -44,8 +44,9 @@ cd portal_da_transparencia</code></pre>
     </ol>
     
    <h2 align="left">Personalização</h2>
-   <p>Para modificar os parâmetros de extração, como a classificação contábil ou o período das despesas, edite as variáveis correspondentes no início do arquivo <code>portal.py</code>. Certifique-se de que os valores correspondam aos disponíveis no Portal da Transparência.</p>
-   
+   <p>Para modificar os parâmetros de extração, como a classificação contábil ou o período das despesas, edite as variáveis correspondentes no início do arquivo <code>portal.py</code>. Certifique-se de que os valores correspondam aos disponíveis no Portal da Transparência.</p><br>
+   <p>Para visualizar as interações com a página, mude a flag na função de inicialização do playwright para headless="False".</p>
+
    <h2 align="left">Contribuição</h2>
    <p>Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou enviar pull requests para melhorias ou correções.</p>
    
