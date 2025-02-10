@@ -61,8 +61,11 @@ class Transparencia:
 
             # Aqui é feita a varredura de todos os débitos pagina a pagina
             await self._varredura_tabela(linhas)
-            await self.page.get_by_role("button", name="").click()
-            await self.page.wait_for_timeout(1500)
+            try:
+                await self.page.get_by_role("button", name="").click()
+                await self.page.wait_for_timeout(1500)
+            except TimeoutError:
+                pass
 
         await self._salvar_csv()
         await self._estruturar_csv()
